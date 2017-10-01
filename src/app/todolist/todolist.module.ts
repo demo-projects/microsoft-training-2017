@@ -6,10 +6,11 @@ import {ItemComponent} from './item/item.component';
 import {ListComponent} from './list/list.component';
 import {MainComponent} from './main/main.component';
 import {TodolistComponent} from './todolist.component';
+import {MsCoreModule} from '../ms-core/ms-core.module';
+import {TodolistService} from './todolist.service';
 
 @NgModule({
-  imports     : [CommonModule],
-  providers   : [],
+  imports     : [CommonModule, MsCoreModule],
   declarations: [
     TodolistComponent,
     HeaderComponent,

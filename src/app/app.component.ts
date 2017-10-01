@@ -4,6 +4,7 @@ import {Component} from '@angular/core';
   selector: 'app-root',
   template: `
     <app-todolist></app-todolist>
+    <app-todolist></app-todolist>
   `
 })
 export class AppComponent {
