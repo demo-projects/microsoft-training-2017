@@ -1,15 +1,21 @@
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {StorageService} from '../ms-core/storage.service';
 import {Item} from './item';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable()
 export class TodolistService {
   private _items: Item[];
   private _store: StorageService;
 
-  constructor(store: StorageService) {
+  constructor(store: StorageService, http: HttpClient) {
     this._store = store;
     this._items = store.get('LIST') || [];
+
+    // fetch data from server using Builtin HttpClient
+    http.get<Item[]>('https://jsonplaceholder.typicode.com/todos')
+        .subscribe(result => this._items = result);
   }
 
   public get items(): Item[] {
@@ -29,4 +35,7 @@ export class TodolistService {
     this._items.splice(index, 1);
   }
 
+  toggleCompleted(item: Item) {
+    // =>  [ {completed: } ]
+  }
 }
