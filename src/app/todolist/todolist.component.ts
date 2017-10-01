@@ -11,7 +11,7 @@ import {TodolistService} from './todolist.service';
       <app-header [title]="appTitle"
                   (itemAdded)="list.addItem($event)"></app-header>
 
-      <app-main>
+      <app-main>1   § ~§1
         <app-list [items]="list.items"></app-list>
       </app-main>
 
