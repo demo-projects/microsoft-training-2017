@@ -1,8 +1,7 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {StorageService} from '../ms-core/storage.service';
 import {Item} from './item';
-import {environment} from '../../environments/environment.prod';
 
 @Injectable()
 export class TodolistService {
@@ -14,8 +13,8 @@ export class TodolistService {
     this._items = store.get('LIST') || [];
 
     // fetch data from server using Builtin HttpClient
-    http.get<Item[]>('https://jsonplaceholder.typicode.com/todos')
-        .subscribe(result => this._items = result);
+    // http.get<Item[]>('https://jsonplaceholder.typicode.com/todos')
+    //     .subscribe(result => this._items = result);
   }
 
   public get items(): Item[] {
