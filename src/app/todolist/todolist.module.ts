@@ -6,12 +6,18 @@ import {ItemComponent} from './item/item.component';
 import {ListComponent} from './list/list.component';
 import {MainComponent} from './main/main.component';
 import {TodolistComponent} from './todolist.component';
-import {TodolistService} from './todolist.service';
 
 @NgModule({
   imports     : [CommonModule],
-  providers   : [TodolistService],
-  declarations: [TodolistComponent, HeaderComponent, MainComponent, FooterComponent, ListComponent, ItemComponent],
+  providers   : [],
+  declarations: [
+    TodolistComponent,
+    HeaderComponent,
+    MainComponent,
+    FooterComponent,
+    ListComponent,
+    ItemComponent
+  ],
   exports     : [TodolistComponent]
 })
 export class TodolistModule {

@@ -1,6 +1,5 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component} from '@angular/core';
 import {Item} from './item';
-import {TodolistService} from './todolist.service';
 
 @Component({
   selector: 'app-todolist',
@@ -8,10 +7,10 @@ import {TodolistService} from './todolist.service';
     <section class="todoapp">
 
       <app-header [title]="appTitle"
-                  (itemAdded)="list.addItem($event)"></app-header>
+                  (itemAdded)="addItem($event)"></app-header>
 
       <app-main>
-        <app-list [items]="list.items"></app-list>
+        <app-list [items]="items"></app-list>
       </app-main>
 
       <app-footer></app-footer>
@@ -19,17 +18,19 @@ import {TodolistService} from './todolist.service';
   `,
   styles  : []
 })
-export class TodolistComponent  {
+export class TodolistComponent {
 
   public appTitle: string;
-  public list: TodolistService;
+  public items: Item[];
 
-  constructor(list: TodolistService) {
+  constructor() {
     this.appTitle = 'TODOAPP';
-    this.list = list;
-
+    this.items    = [];
   }
 
+  addItem(title: string) {
+    this.items.push(new Item(title));
+  }
 
 
 }
