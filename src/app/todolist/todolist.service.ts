@@ -9,7 +9,7 @@ export class TodolistService {
 
   constructor(store: StorageService) {
     this._store = store;
-    this._items =  store.get('LIST') || [];
+    this._items = store.get('LIST') || [];
   }
 
   public get items(): Item[] {
@@ -17,8 +17,16 @@ export class TodolistService {
   }
 
   addItem(title: string): void {
-    this._items.push(new Item(title));
+    // immutable array for OnPush
+    this._items = [...this._items, new Item(title)];
+
+    // this._items.push(new Item(title));
     this._store.set('LIST', this.items);
+  }
+
+  removeItem(item: Item): void {
+    const index = this._items.indexOf(item);
+    this._items.splice(index, 1);
   }
 
 }

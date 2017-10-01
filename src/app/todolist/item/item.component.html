@@ -3,7 +3,11 @@
     <input class="toggle"
            [checked]="item.completed"
            type="checkbox">
-    <label>{{ item.title }}</label>
+
+    <label>
+      {{ item.created | date }}: {{ item.title | upper:'!!' }}
+    </label>
+
     <button (click)="list.removeItem(item)"
         class="destroy"></button>
   </div>

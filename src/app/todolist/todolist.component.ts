@@ -11,11 +11,11 @@ import {TodolistService} from './todolist.service';
       <app-header [title]="appTitle"
                   (itemAdded)="list.addItem($event)"></app-header>
 
-      <app-main>1   § ~§1
+      <app-main>
         <app-list [items]="list.items"></app-list>
       </app-main>
 
-      <app-footer></app-footer>
+      <app-footer [count]="list.items | countBy:'completed':false"></app-footer>
     </section>
   `,
   styles  : []
