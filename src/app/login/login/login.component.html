@@ -1,5 +1,35 @@
-<form>
-  <input type="text" placeholder="username">
-  <input type="password" placeholder="password">
-  <button>login</button>
+<form [formGroup]="loginForm"
+      (ngSubmit)="submit()">
+
+  <fieldset formGroupName="details">
+    <input type="text"
+           formControlName="username"
+           required
+           placeholder="username">
+
+    {{ username.status }}
+
+    <span *ngIf="username.invalid">username invalid!</span>
+
+    <input type="password"
+           formControlName="password"
+           placeholder="password">
+
+    <input type="checkbox"
+           formControlName="rememberMe">
+
+    <div formArrayName="emails">
+      <input type="text"
+             *ngFor="let email of emails.controls; let i = index;"
+             [formControlName]="i">
+    </div>
+    <button type="button" (click)="addEmail()">+</button>
+
+
+  </fieldset>
+  <button type="submit"
+          [disabled]="loginForm.invalid">login
+  </button>
+
 </form>
+

@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {Item} from './item';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {TodolistService} from './todolist.service';
 
 @Component({
-  selector: 'app-todolist',
-  providers   : [TodolistService],
-  template: `
+  selector : 'app-todolist',
+  providers: [TodolistService],
+  template : `
     <section class="todoapp">
 
       <app-header [title]="appTitle"
@@ -18,13 +18,17 @@ import {TodolistService} from './todolist.service';
       <app-footer [count]="list.items | countBy:'completed':false"></app-footer>
     </section>
   `,
-  styles  : []
+  styles   : []
 })
-export class TodolistComponent {
+export class TodolistComponent implements OnInit {
 
   public appTitle: string;
 
-  constructor(public list: TodolistService) {
+  constructor(public list: TodolistService, private route: ActivatedRoute) {
     this.appTitle = 'TODOAPP';
+  }
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe( p => console.log(p) );
   }
 }
