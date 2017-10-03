@@ -10,7 +10,8 @@ export class TodolistService {
   private _store: StorageService;
   private log: LogService;
 
-  constructor(store: StorageService, http: HttpClient, log: LogService) {
+  constructor(store: StorageService,
+              http: HttpClient, log: LogService) {
     this._store = store;
     this.log    = log;
     this._items = store.get('LIST') || [];

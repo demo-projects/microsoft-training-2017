@@ -1,16 +1,18 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {TodolistModule} from './todolist/todolist.module';
 import {LoginModule} from './login/login.module';
 import {HistoryModule} from './history/history.module';
 import {RouterModule} from '@angular/router';
 import {routes} from './app.routes';
+import { MarkerDirective } from './marker.directive';
+import { IfDirective } from './if.directive';
+import { UpperPipe } from './upper.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MarkerDirective, IfDirective, UpperPipe],
   imports     : [
-    RouterModule.forRoot(routes),
     BrowserModule,
     TodolistModule,
     LoginModule,
@@ -20,4 +22,8 @@ import {routes} from './app.routes';
 })
 
 export class AppModule {
+
+  constructor(title: Title) {
+    title.setTitle('MY APP');
+  }
 }

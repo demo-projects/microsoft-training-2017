@@ -1,13 +1,18 @@
 import {Component} from '@angular/core';
+import {DataProviderService} from './data-provider.service';
 
 @Component({
   selector: 'app-root',
   template: `
-    <a routerLink="">login</a>
-    <a routerLink="list">list</a>
-    <a routerLink="history">history</a>
-
-    <router-outlet></router-outlet>
+    <h1 appMarker="red">
+      {{ dao.getData() | upper }}
+    </h1>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+  public dao: DataProviderService;
+
+  constructor(dao: DataProviderService) {
+    this.dao = dao;
+  }
+}
